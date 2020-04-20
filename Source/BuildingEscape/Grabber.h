@@ -25,13 +25,21 @@ protected:
 private:
 	float Reach = 100.f;
 
+	UPhysicsHandleComponent* PhysicsHandle = nullptr;
+	UInputComponent* InputComponent = nullptr;
+
 	void Grab();
 	void Release();
 	void FindPhysicsHandle();
 	void SetupInputComponent();
+
+	// return first actor in reach with physics body
 	FHitResult GetFirstPhysicsBodyInReach() const;
+
+	// return line trace end (extent of players reach)
+	FVector GetPlayersReach() const;
+
+	// get players position in the world
+	FVector GetPlayersWorldPosition() const;
 	
-	UPhysicsHandleComponent* PhysicsHandle = nullptr;
-	UPhysicsHandleComponent* GrabComponent = nullptr;
-	UInputComponent* InputComponent = nullptr;
 };
